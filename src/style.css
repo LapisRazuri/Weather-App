@@ -13,11 +13,12 @@
   } */
 
 form {
-  display: flex;
   flex-direction: column;
   grid-row: 1/2;
+  display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 body {
@@ -26,23 +27,26 @@ body {
   font-family: 'Myfont';
   display: grid;
   grid-template: 1fr 2fr 1fr/1fr;
+  justify-content: center;
+  align-items: center;
 }
 
 #location {
   width: 50%;
 }
   
-.container {
+.infoContainer {
   grid-row: 3/4;
-  
 }
 
-img {
+.gifContainer {
   grid-row: 2/3;
-
 }
 
-.container, img {
-  display: flex;
-  justify-content: center;
+.infoContainer, .gifContainer {
+  display: block;
+  margin: auto;
+  padding: 0;
 }
+
+

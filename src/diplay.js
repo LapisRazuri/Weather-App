@@ -11,4 +11,5 @@ const img = document.querySelector('img');
 export function gifyImg(key) {
     console.log(key)
     img.src = key.data.images.original.url;
+    img.removeAttribute("hidden");
 }
