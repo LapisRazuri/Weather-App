@@ -25,7 +25,7 @@ body {
   background-color: black;
   font-family: 'Myfont';
   display: grid;
-  grid-template: 1fr 2fr/1fr;
+  grid-template: 1fr 2fr 1fr/1fr;
 }
 
 #location {
@@ -33,8 +33,16 @@ body {
 }
   
 .container {
+  grid-row: 3/4;
+  
+}
+
+img {
   grid-row: 2/3;
+
+}
+
+.container, img {
   display: flex;
   justify-content: center;
-  
 }

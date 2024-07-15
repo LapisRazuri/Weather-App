@@ -1,4 +1,4 @@
-export async function fetchInfo (url) {
+export async function weather (url) {
     try {
         url.searchParams.set('key', 'JUNGCDPBC8E4FRPWSS5JZHXJG');
         const data = await fetch(url, {mode:'cors'});
@@ -13,3 +13,18 @@ export async function fetchInfo (url) {
         return err;
     }
 }
+
+export async function gify(newURL) {
+    try { 
+        const data = await fetch( newURL, {mode:'cors'});
+        console.log(data);
+        const gify = await data.json();
+        console.log(gify);
+
+        return gify;
+    }catch(error){
+        console.log(error.message)
+        }
+    
+    } 
+
