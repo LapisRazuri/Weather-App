@@ -1,16 +1,15 @@
 import './style.css';
 // import Icon from './icon.png';
+function setLocationToURL (location) {
+    const url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + location;
+    let newURL =  new URL(url);        
 
-function setLocation (location) {
-        const url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + location;
+    console.log(newURL)
 
-        let newURL =  new URL(url);        
-
-        console.log(newURL)
-
-        return newURL
-
+    return newURL
 }
+
+
 
 async function fetchInfo (url) {
     try {
@@ -28,16 +27,26 @@ async function fetchInfo (url) {
     }
 }
 
-
-
-const button = document.createElement('button');
-document.body.appendChild(button);
-
-button.addEventListener('click', function () {
-   const urlWithLocation = setLocation("gothenburg");
-    fetchInfo(urlWithLocation).then(result => {
-        console.log(result)
-    })
+const displayDiv = document.getElementById("display");
+function display(key) {
+    const info = `Condition: ${key.days[0].conditions}<br>
+                  DateTime: ${key.days[0].datetime}<br>
+                  Feels Like: ${key.days[0].feelslike}`;
     
+    displayDiv.innerHTML = info;
+}
 
+const input = document.getElementById("location");
+
+input.addEventListener('input', function () {
+   const location = input.value;
+   const urlWithLocation = setLocationToURL(location);
+    fetchInfo(urlWithLocation).then(result => {
+        display(result)
+        
+        
+        // ("condition", result.days[0].conditions);
+        // display("datetime", result.days[0].datetime);
+        // display("feelslike", result.days[0].feelslike)
+    })
 })
